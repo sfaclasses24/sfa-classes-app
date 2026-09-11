@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SFA Classes</title>
+<style>
+body{margin:0;font-family:system-ui;background:#e8f5e9;min-height:100vh}
+.card{background:white;border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,.07);padding:22px;width:360;max-width:90vw}
+.btn{background:#2e7d32;color:white;border:none;padding:11px 18px;border-radius:10px;font-weight:700;cursor:pointer;width:100%}
+.input{width:100%;padding:12px;border:1.5px solid #a5d6a7;border-radius:10px;margin-top:6px;box-sizing:border-box}
+.top{display:flex;justify-content:space-between;align-items:center;background:white;padding:14px 18px;border-radius:14px;max-width:900px;margin:16px auto}
+.quiz-opt{padding:12px;border:1.5px solid #c8e6c9;border-radius:10px;background:#f1f8e9;cursor:pointer;text-align:left;width:100%;margin-top:8px}
+</style></head>
+<body>
+<div id="app"></div>
+<script>
+const Q=[{q:"Maths: 15 x 4 =?",o:["60","45","50","70"],a:0},{q:"Science: Water ka formula?",o:["H2O","CO2","O2","NaCl"],a:0},{q:"English: Synonym of Happy?",o:["Sad","Joyful","Angry","Tired"],a:1}]
+let user=localStorage.getItem('sfa_user')||'', step=0, score=0;
+function render(){
+const app=document.getElementById('app');
+if(!user){
+app.innerHTML=`<div style="min-height:100vh;display:grid;place-items:center"><div class="card"><h2 style="color:#2e7d32">🌿 SFA Classes</h2><p style="color:#555">Student Login</p><div style="margin-top:18px"><label>Student Name</label><input id="nm" class="input" placeholder="Apna naam likho"></div><button class="btn" style="margin-top:16px" onclick="login()">Login</button></div></div>`;return;
+}
+if(step>=Q.length){
+app.innerHTML=`<div class="top"><b style="color:#2e7d32">SFA Classes</b><button onclick="logout()" style="background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;padding:8px 12px;border-radius:8px">Logout</button></div><div style="max-width:600px;margin:20px auto" class="card"><h2 style="color:#2e7d32;text-align:center">Quiz Complete! 🎉</h2><p style="text-align:center;margin-top:12px;font-size:22px">Score: ${score} / ${Q.length}</p><p style="text-align:center">Hi ${user}</p><button class="btn" style="margin-top:16px" onclick="resetQ()">Dubara Quiz</button></div>`;return;
+}
+app.innerHTML=`<div class="top"><b style="color:#2e7d32">SFA Classes</b><span>Hi ${user} | <a href="#" onclick="logout()">Logout</a></span></div><div style="max-width:600px;margin:18px auto" class="card"><p style="color:#2e7d32;font-weight:700">Quiz ${step+1} / ${Q.length}</p><h3 style="margin-top:8px">${Q[step].q}</h3><div style="margin-top:14px">${Q[step].o.map((x,i)=>`<button class="quiz-opt" onclick="ans(${i})">${x}</button>`).join('')}</div><p style="margin-top:12px">Score: ${score}</p></div>`;
+}
+function login(){let v=document.getElementById('nm').value.trim();if(!v)return alert('Name likho');localStorage.setItem('sfa_user',v);user=v;step=0;score=0;render();}
+function logout(){localStorage.removeItem('sfa_user');user='';step=0;score=0;render();}
+function ans(i){if(i===Q[step].a)score++;step++;render();}
+function resetQ(){step=0;score=0;render();}
+render();
+</script></body></html>
