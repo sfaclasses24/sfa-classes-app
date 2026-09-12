@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;overflow:hidden}
+#logoBtn{position:fixed;top:10px;left:10px;z-index:99999;display:flex;align-items:center;gap:8px;background:#fff;padding:6px 12px 6px 6px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.3);border:none;cursor:pointer}
+#sWrap{width:100vw;height:100vh;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+#sWrap::-webkit-scrollbar{display:none}
+.page{min-width:100vw;width:100vw;height:100vh;scroll-snap-align:start;flex-shrink:0;position:relative;background:#fef9e8}
+.page img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+.reviewBar{position:fixed;bottom:62px;left:10px;right:10px;z-index:50;background:#fff;border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.dots{position:fixed;bottom:20px;left:0;right:0;z-index:50;display:flex;justify-content:center;gap:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:#bbb;border:2px solid #fff;transition:.3s}
+.dot.on{background:#1e1b4b;width:28px;border-radius:10px}
+.hide{display:none!important}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;color:#fff}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;background:#f8fafc}
+.tab{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:12px;gap:4px}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:700;background:transparent;font-size:12px}
+.tabBtn.on{background:#1e1b4b;color:#fff}
+</style>
+</head>
+<body>
+<button id="logoBtn"><img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:32px;height:32px;border-radius:8px"><div style="text-align:left;line-height:1.1"><b style="font-size:12px;color:#1e1b4b">SFA Classes</b><br><small style="font-size:9px;color:#16a34a;font-weight:700">Study for all</small></div></button>
+<div id="sWrap">
+<div class="page" id="p0"><img src="sfa_banner.jpg"></div>
+<div class="page" id="p1"><img id="img1" src="https://i.pravatar.cc/800?img=11"></div>
+<div class="page" id="p2"><img id="img2" src="https://i.pravatar.cc/800?img=5"></div>
+<div class="page" id="p3"><img id="img3" src="https://i.pravatar.cc/800?img=8"></div>
+</div>
+<div class="reviewBar"><img id="rvImg" src="https://i.pravatar.cc/80?img=32" style="width:40px;height:40px;border-radius:50%"><div style="flex:1"><b id="rvName" style="font-size:12px">Rahul</b> <small style="color:#f59e0b">★★★★★</small><p id="rvText" style="font-size:11px;color:#555">Best coaching!</p></div><small id="rvCount" style="color:#888">1/3</small></div>
+<div class="dots"><div class="dot on" data-i="0"></div><div class="dot" data-i="1"></div><div class="dot" data-i="2"></div><div class="dot" data-i="3"></div></div>
+
+<!-- LOGIN MODAL -->
+<div id="tlog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999999;align-items:center;justify-content:center;padding:12px">
+<div style="background:#fff;border-radius:20px;padding:16px;width:100%;max-width:380px;max-height:90vh;overflow:auto">
+<div class="tab"><button class="tabBtn on" id="tT">Teacher</button><button class="tabBtn" id="tS">Student</button><button class="tabBtn" id="tA">About SFA</button></div>
+<div id="boxT"><input id="a" placeholder="Teacher ID = admin"><input id="b" type="password" placeholder="Pass = 1234"><button class="btn" style="background:#1e1b4b" id="btnT">Teacher Login</button></div>
+<div id="boxS" class="hide"><input id="sa" placeholder="Student ID"><input id="sb" type="password" placeholder="Password"><button class="btn" style="background:#16a34a" id="btnS">Student Login</button></div>
+<div id="boxA" class="hide"><div style="background:#fffaf0;border-radius:14px;padding:14px;border:1px solid #fde68a"><div style="display:flex;gap:12px;align-items:center"><img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:52px;height:52px;border-radius:12px;object-fit:cover"><div><b style="font-size:14px;color:#1e1b4b">Nitish Sir</b><br><small style="background:#16a34a;color:#fff;padding:2px 6px;border-radius:6px
