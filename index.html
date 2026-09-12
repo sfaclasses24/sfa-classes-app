@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;overflow:hidden}
+.topBar{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;justify-content:flex-start;padding:10px;max-width:430px;margin:auto}
+.logoMerged{position:relative;z-index:10000;display:flex;align-items:center;gap:8px;background:#fff;padding:6px 12px 6px 6px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.3);border:2px solid #fff;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.sWrap{width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;display:flex;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.sWrap::-webkit-scrollbar{display:none}
+.page{min-width:100vw;width:100vw;height:100vh;scroll-snap-align:start;flex-shrink:0;position:relative;background:#fef9e8;display:flex;align-items:center;justify-content:center}
+.page img.bg{width:100%;height:100%;object-fit:cover;object-position:top center;position:absolute;top:0;left:0;z-index:1}
+.page img.cover{object-fit:cover;background:#000;z-index:1}
+.reviewBar{position:fixed;bottom:62px;left:10px;right:10px;z-index:45;background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 4px 20px rgba(0,0,0,.3);display:flex;gap:10px;align-items:center;max-width:410px;margin:auto}
+.dots{position:fixed;bottom:22px;left:0;right:0;z-index:40;display:flex;justify-content:center;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.25);transition:.3s;cursor:pointer;border:2px solid #fff}
+.dot.active{background:#1e1b4b;width:28px;border-radius:10px}
+.hide{display:none!important}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;color:#fff}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;background:#f8fafc}
+.tab{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:12px;gap:4px}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:transparent;font-size:12px}
+.tabBtn.active{background:#1e1b4b;color:#fff}
+</style>
+</head>
+<body>
+
+<div class="topBar">
+<button id="mainLogo" class="logoMerged" type="button">
+<img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:32px;height:32px;border-radius:8px;object-fit:cover;pointer-events:none">
+<div style="text-align:left;line-height:1.1;pointer-events:none"><b style="font-size:12px;color:#1e1b4b">SFA Classes</b><br><small style="font-size:9px;color:#16a34a;font-weight:700">Study for all</small></div>
+</button>
+</div>
+
+<div id="sWrap" class="sWrap">
+<div class="page"><img class="bg" src="sfa_banner.jpg" style="pointer-events:none"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img1" src="https://i.pravatar.cc/800?img=11"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img2" src="https://i.pravatar.cc/800?img=5"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img3" src="https://i.pravatar.cc/800?img=8"></div>
+</div>
+
+<div class="reviewBar"><img id="rvImg" src="https://i.pravatar.cc/80?img=32" style="width:40px;height:40px;border-radius:50%"><div style="flex:1"><div style="display:flex;gap:6px"><b id="rvName" style="font-size:12px">Rahul Kumar</b><small style="color:#f59e0b">★★★★★</small><small id="rvCount" style="margin-left:auto;color:#888;font-size:10px">1/3</small></div><p id="rvText" style="font-size:11px;color:#555;margin-top:2px">SFA Classes ne meri life badal di!</p></div></div>
+<div class="dots"><div class="dot active" id="d0"></div><div class="dot" id="d1"></div><div class="dot" id="d2"></div><div class="dot" id="d3"></div></div>
+
+<div id="tlog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:99999;align-items:center;justify-content:center;padding:12px">
+<div style="background:#fff;border-radius:20px;padding:16px;width:100%;max-width:380px;max-height:92vh;overflow:auto">
+<div style="text-align:center;font-weight:700;margin-bottom:10px">🔐 SFA Login</div>
+<div class="tab">
+<button id="tabT" class="tabBtn active">Teacher</button>
+<button id="tabS" class="tabBtn">Student</button>
+<button id="tabA" class="tabBtn">About SFA</button>
+</div>
+<div id="teacherBox"><input id="a" placeholder="Teacher ID = admin"><input id="b" type="password" placeholder="Pass = 1234"><button class="btn" style="background:#1e1b4b;margin-top:4px" id="btnT">Teacher Login</button></div>
+<div id="studentBox" class="hide"><input id="sa" placeholder="Student ID"><input id="sb" type="password" placeholder="Password"><button class="btn" style="background:#16a34a;margin-top:4px" id="btnS">Student Login</button><p style="font-size:11px;color:#888;margin-top:6px;text-align:center">Demo: student / 1234</p></div>
+<div id="aboutBox" class="hide"><div style="background:#fffaf0;border-radius:12px;padding:12px"><b>📚 SFA Classes</b><br><br><p style="font-size:12px;color:#444;line-height:1.5">🎯 Mission: Small Steps Make Big Results<br><br>📍 SFA Center<br>📞 +91 XXXXX<br>Why SFA? Best Teachers, Small Batches</p></div></div>
+<button class="btn" style="background:#eee;color:#000;margin-top:10px" id="btnClose">Close</button>
+</div>
+</div>
+
+<div id="td" class="hide" style="position:fixed;inset:0;background:#fffafb;z-index:99990;padding:12px;max-width:430px;margin:auto;overflow:auto"><div style="display:flex;justify-content:space-between"><b>Teacher Panel</b><span id="closeTD" style="background:#1e1b4b;color:#fff;padding:6px 14px;border-radius:8px">X</span></div><div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px"><b>3 Reviews</b><br><br><input id="r1n" placeholder="Name 1"><input id="r1t" placeholder="Review 1"><input id="r1p" type="file" accept="image/*"><input id="r2n" placeholder="Name 2"><input id="r2t" placeholder="Review 2"><input id="r2p" type="file" accept="image/*"><input id="r3n" placeholder="Name 3"><input id="r3t" placeholder="Review 3"><input id="r3p" type="file" accept="image/*"><button class="btn" style="background:#1e1b4b" id="btnSaveR">Save Reviews</button></div><div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px"><input id="ph1" type="file" accept="image/*"><button class="btn" style="background:#1e1b4b" id="btnP1">Save Photo1</button><br><br><input id="ph2" type="file" accept="image/*"><button class="btn" style="background:#16a34a" id="btnP2">Save Photo2</button><br><br><input id="ph3" type="file" accept="image/*"><button class="btn" style="background:#f59e0b" id="btnP3">Save Photo3</button></div></div>
+<div id="sd" class="hide" style="position:fixed;inset:0;background:#f0fdf4;z-index:99990;padding:16px;max-width:430px;margin:auto;overflow:auto"><div style="background:#fff;border-radius:16px;padding:16px;margin-top:20px;text-align:center"><h2>Welcome!</h2><p id="sWelcome"></p><button class="btn" style="background:#1e1b4b;margin-top:14px" id="btnCloseS">Logout</button></div></div>
+
+<script>
+// ALL CLICKS WITH JS - NO INLINE
