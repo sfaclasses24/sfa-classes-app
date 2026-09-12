@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fffafb;overflow-x:hidden}
+.box{max-width:430px;margin:auto;position:relative}
+.banner{position:relative;min-height:100vh}
+.banner img.main{width:100%;display:block;min-height:100vh;object-fit:cover}
+.top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:10px;z-index:10}
+.logo{background:#fff;padding:5px 10px 5px 5px;border-radius:12px;display:flex;gap:6px;align-items:center;box-shadow:0 2px 8px #0002}
+.ham{background:#fff;width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #0002;font-size:22px}
+.drawer{position:fixed;top:0;right:-100%;width:84%;max-width:340px;height:100%;background:#fff;z-index:100;transition:.3s;box-shadow:-5px 0 20px #0002;padding:16px;overflow-y:auto}
+.drawer.open{right:0}
+.overlay{position:fixed;inset:0;background:#0005;z-index:90;display:none}
+.overlay.show{display:block}
+.card{background:#fff;border-radius:16px;padding:14px;margin-top:12px;box-shadow:0 2px 10px #0001}
+.sCard{background:#f8fafc;border-radius:14px;padding:12px;margin-top:10px;display:flex;gap:10px;align-items:center;border:1px solid #eef}
+.hide{display:none}
+.btn{width:100%;padding:12px;border:none;border-radius:10px;font-weight:bold;color:#fff}
+input{width:100%;padding:11px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="box">
+<div class="banner">
+<img class="main" src="sfa_banner.jpg">
+<div class="top">
+<div class="logo" onclick="openT()">
+<img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:30px;height:30px;border-radius:8px">
+<div><b style="font-size:11px">SFA Classes</b><br><small style="color:green;font-size:9px">Study for all</small></div>
+</div>
+<div class="ham" onclick="openD()">☰</div>
+</div>
+</div>
+</div>
+
+<div id="over" class="overlay" onclick="closeD()"></div>
+<div id="draw" class="drawer">
+<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:18px">Menu</b><span onclick="closeD()" style="font-size:24px;background:#eee;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px">✕</span></div>
+
+<button class="btn" style="background:#1e1b4b;margin-top:16px" onclick="closeD();openT()">👨‍🏫 Teacher Login</button>
+<button class="btn" style="background:#22c55e;margin-top:8px" onclick="closeD();openS()">🎓 Student Login</button>
+
+<div style="margin-top:20px"><b>⭐ Students of the Week</b>
+<div class="sCard"><img src="https://i.pravatar.cc/60?img=11" style="width:44px;height:44px;border-radius:50%"><div><b>Aarav Sharma</b><br><small style="color:#22c55e">10th - 98%</small></div><span style="margin-left:auto">🏆</span></div>
+<div class="sCard"><img src="https://i.pravatar.cc/60?img=5" style="width:44px;height:44px;border-radius:50%"><div><b>Priya Verma</b><br><small style="color:#22c55e">9th - 96%</small></div><span style="margin-left:auto">⭐</span></div>
+<div class="sCard"><img src="https://i.pravatar.cc/60?img=8" style="width:44px;height:44px;border-radius:50%"><div><b>Rohan Gupta</b><br><small style="color:#22c55e">10th - 95%</small></div><span style="margin-left:auto">🔥</span></div>
+</div>
+
+<div style="margin-top:20px"><b>💬 Reviews</b><div id="rv"></div></div>
+
+<div style="margin-top:20px;background:#fff7ed;padding:12px;border-radius:14px;border:1px solid #ffedd5"><b>📞 Contact</b><p style="font-size:12px;margin-top:6px;color:#666">SFA Classes, Your City<br>Phone: +91 XXXXX XXXXX</p></div>
+</div>
+
+<div id="tlog" class="hide" style="position:fixed;inset:0;background:#fff;z-index:200;padding:16px;max-width:430px;margin:auto"><div class="card"><h3>Teacher Login</h3><br><input id="a" placeholder="ID = admin"><input id="b" type="password" placeholder="Pass = 1234"><button class="btn" style="background:#1e1b4b" onclick="lt()">Login</button><button class="btn" style="background:#eee;color:#000;margin-top:6px" onclick="gh()">Back</button></div></div>
+<div id="slog" class="hide" style="position:fixed;inset:0;background:#fff;z-index:200;padding:16px;max-width:430px;margin:auto"><div class="card"><h3>Student Login</h3><br><input placeholder="Roll No"><button class="btn" style="background:#22c55e">Login</button><button class="btn" style="background:#eee;color:#000;margin-top:6px" onclick="gh()">Back</button></div></div>
+<div id="td" class="hide" style="position:fixed;inset:0;background:#fffafb;z-index:200;padding:16px;max-width:430px;margin:auto;overflow:auto"><div class="card"><b>Teacher Dashboard</b> <span onclick="gh()" style="float:right;background:#eee;padding:5px 8px;border-radius:6px;font-size:12px">Logout</span></div><div class="card"><b>Add Student of Week + Review</b><br><br><input id="n" placeholder="Student Name"><input id="c" placeholder="Class & %"><input id="tx" placeholder="Review text"><input id="ph" type="file" accept="image/*"><button class="btn" style="background:#22c55e" onclick="sr()">Save</button></div><div class="card"><div id="pr"></div><button onclick="dr()" style="width:100%;padding:8px;background:#fee2e2;color:red;border:none;border-radius:8px;margin-top:6px">Delete</button></div></div>
+
+<script>
+let R=JSON.parse(localStorage.getItem('r')||'null'),tmp='';
+function openD(){document.getElementById('draw').classList.add('open');document.getElementById('over').classList.add('show')}
+function closeD(){document.getElementById('draw').classList.remove('open');document.getElementById('over').classList.remove('show')}
+function openT(){closeD();document.getElementById('tlog').classList.remove('hide')}
+function openS(){closeD();document.getElementById('slog').classList.remove('hide')}
+function gh(){document.getElementById('tlog').classList.add('hide');document.getElementById('slog').classList.add('hide');document.getElementById('td').classList.add('hide');vr()}
+function lt(){if(document.getElementById('a').value=='admin'&&document.getElementById('b').value=='1234'){document.getElementById('tlog').classList.add('hide');document.getElementById('td').classList.remove('hide');vr()}else alert('admin / 1234')}
+function vr(){let x=document.getElementById('rv'),y=document.getElementById('pr');if(!R){if(x)x.innerHTML='<small style=color:#aaa>No review yet</small>';if(y)y.innerHTML='<small style=color:#aaa>No review</small>';return}let h='<div class=sCard><img src='+(R.p||'https://i.pravatar.cc/60')+' style=width:44px;height:44px;border-radius:50%><div><b>'+R.n+'</b><br><small>'+R.c+'</small><p style=font-size:11px>'+R.t+'</p></div></div>';if(x)x.innerHTML=h;if(y)y.innerHTML=h}
+document.getElementById('ph').addEventListener('change',function(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=function(ev){tmp=ev.target.result};r.readAsDataURL(f)});
+function sr(){let n=document.getElementById('n').value,c=document.getElementById('c').value,t=document.getElementById('tx').value;if(!n){alert('Name likho');return}R={n:n,c:c||'SFA',t:t||'Excellent!',p:tmp||R?.p||''};localStorage.setItem('r',JSON.stringify(R));alert('Saved');vr()}
+function dr(){if(confirm('Delete?')){R=null;localStorage.removeItem('r');vr()}}
+vr();
+</script>
+</body>
+</html>
