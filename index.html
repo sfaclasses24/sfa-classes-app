@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;overflow:hidden}
+.sWrap{width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;display:flex;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.sWrap::-webkit-scrollbar{display:none}
+.page{min-width:100vw;width:100vw;height:100vh;scroll-snap-align:start;flex-shrink:0;position:relative;background:#fef9e8;display:flex;align-items:center;justify-content:center}
+.page img.bg{width:100%;height:100%;object-fit:cover;object-position:top center}
+.page img.cover{object-fit:cover;background:#000}
+.logoIn{position:absolute;top:10px;left:10px;z-index:10;display:flex;align-items:center;gap:8px;background:#fff;padding:6px 12px 6px 6px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.15);cursor:pointer;border:none}
+.reviewBar{position:fixed;bottom:54px;left:10px;right:10px;z-index:45;background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 4px 20px rgba(0,0,0,.3);display:flex;gap:10px;align-items:center;max-width:410px;margin:auto}
+.dots{position:fixed;bottom:18px;left:0;right:0;z-index:40;display:flex;justify-content:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,0.2);transition:.3s}
+.dot.active{background:#1e1b4b;width:24px;border-radius:10px}
+.hide{display:none!important}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;color:#fff}
+input,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;background:#f8fafc}
+.tab{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:12px}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:transparent}
+.tabBtn.active{background:#1e1b4b;color:#fff}
+</style>
+</head>
+<body>
+
+<div id="sWrap" class="sWrap">
+<div class="page">
+<button class="logoIn" onclick="openT()">
+<img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:32px;height:32px;border-radius:8px;object-fit:cover">
+<div style="text-align:left;line-height:1.1"><b style="font-size:12px;color:#1e1b4b">SFA Classes</b><br><small style="font-size:9px;color:#16a34a;font-weight:700">Study for all</small></div>
+</button>
+<img class="bg" src="sfa_banner.jpg">
+</div>
+<div class="page" style="background:#000"><img class="bg cover" id="img1" src="https://i.pravatar.cc/800?img=11"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img2" src="https://i.pravatar.cc/800?img=5"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img3" src="https://i.pravatar.cc/800?img=8"></div>
+</div>
+
+<div class="reviewBar" id="reviewBar"><img id="rvImg" src="https://i.pravatar.cc/80?img=32" style="width:40px;height:40px;border-radius:50%"><div style="flex:1"><div style="display:flex;gap:6px"><b id="rvName" style="font-size:12px">Rahul Kumar</b><small style="color:#f59e0b">★★★★★</small><small id="rvCount" style="margin-left:auto;color:#888;font-size:10px">1/3</small></div><p id="rvText" style="font-size:11px;color:#555;margin-top:2px">SFA Classes ne meri life badal di!</p></div></div>
+<div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+<!-- LOGIN WITH 2 TABS -->
+<div id="tlog" class="hide" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px">
+<div style="background:#fff;border-radius:20px;padding:20px;width:100%;max-width:380px;max-height:90vh;overflow:auto">
+
+<div class="tab">
+<button id="tabT" class="tabBtn active" onclick="switchTab('T')">👨‍🏫 Teacher</button>
+<button id="tabS" class="tabBtn" onclick="switchTab('S')">👨‍🎓 Student</button>
+</div>
+
+<!-- TEACHER LOGIN -->
+<div id="teacherBox">
+<h3 style="text-align:center">Teacher Login</h3><br>
+<input id="a" placeholder="ID = admin"><input id="b" type="password" placeholder="Pass = 1234">
+<button class="btn" style="background:#1e1b4b;margin-top:8px" onclick="lt()">Teacher Login</button>
+<p style="text-align:center;font-size:11px;color:#888;margin-top:8px">ID: admin / Pass: 1234</p>
+</div>
+
+<!-- STUDENT LOGIN -->
+<div id="studentBox" class="hide">
+<h3 style="text-align:center">Student Login</h3><br>
+<input id="sa" placeholder="Student ID"><input id="sb" type="password" placeholder="Password">
+<button class="btn" style="background:#16a34a;margin-top:8px" onclick="ls()">Student Login</button>
+<p style="text-align:center;font-size:11px;color:#888;margin-top:8px">Demo: ID: student / Pass: 1234</p>
+<div style="margin-top:12px;background:#f0fdf4;border-radius:10px;padding:10px">
+<small style="font-size:11px">Student ko apna result yaha dikhega login ke baad</small>
+</div>
+</div>
+
+<button class="btn" style="background:#eee;color:#000;margin-top:10px" onclick="gh()">Cancel</button>
+</div>
+</div>
+
+<!-- TEACHER PANEL -->
+<div id="td" class="hide" style="position:fixed;inset:0;background:#fffafb;z-index:200;padding:12px;max-width:430px;margin:auto;overflow:auto">
+<div style="display:flex;justify-content:space-between"><b>Teacher Panel</b><span onclick="gh()" style="background:#1e1b4b;color:#fff;padding:6px 14px;border-radius:8px">X</span></div>
+<div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px;border:2px solid #e0e7ff">
+<b>3 Reviews (5 sec auto)</b><br><br>
+<input id="r1n" placeholder="Name 1"><input id="r1t" placeholder="Review 1"><input id="r1p" type="file" accept="image/*">
+<input id="r2n" placeholder="Name 2"><input id="r2t" placeholder="Review 2"><input id="r2p" type="file" accept="image/*">
+<input id="r3n" placeholder="Name 3"><input id="r3t" placeholder="Review 3"><input id="r3p" type="file" accept="image/*">
+<button class="btn" style="background:#1e1b4b" onclick="saveR()">Save Reviews</button>
+</div>
+<div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px"><input id="ph1" type="file" accept="image/*"><button class="btn" style="background:#1e1b4b" onclick="save(1)">Save Photo 1</button><br><br><input id="ph2" type="file" accept="image/*"><button class="btn" style="background:#16a34a" onclick="save(2)">Save Photo 2</button><br><br><input id="ph3" type="file" accept="image/*"><button class="btn" style="background:#f59e0b" onclick="save(3)">Save Photo 3</button></div>
+</div>
+
+<!-- STUDENT DASHBOARD -->
+<div id="sd" class="hide" style="position:fixed;inset:0;background:#f0fdf4;z-index:200;padding:16px;max-width:430px;margin:auto;overflow:auto">
+<div style="background:#fff;border-radius:16px;padding:16px;margin-top:20px;text-align:center"><h2>👨‍🎓 Welcome Student!</h2><p style="font-size:12px;color:#666;margin-top:6px" id="sWelcome">ID: student</p><div style="margin-top:14px;background:#f1f5f9;border-radius:12px;padding:12px"><b>Your Result</b><br><br><div style="display:flex;justify-content:space-between"><span>Maths</span><b>92/100</b></div><div style="display:flex;justify-content:space-between;margin-top:6px"><span>Science</span><b>88/100</b></div></div><button class="btn" style="background:#1e1b4b;margin-top:14px" onclick="gh()">Logout</button></div>
+</div>
+
+<script>
+let photos=JSON.parse(localStorage.getItem('sfa_photos')||'null')||{p1:'https://i.pravatar.cc/800?img=11',p2:'https://i.pravatar.cc/800?img=5',p3:'https://i.pravatar.cc/800?img=8'};
+let reviews=JSON.parse(localStorage.getItem('sfa_reviews3')||'null')||[{n:'Rahul Kumar',t:'SFA Classes ne meri life badal di! Best teachers ❤️',p:'https://i.pravatar.cc/80?img=32'},{n:'Priya Singh',t:'Yaha padhke mera 95% aaya!',p:'https://i.pravatar.cc/80?img=5'},{n:'Aman Verma',t:'Best coaching, concepts clear!',p:'https://i.pravatar.cc/80?img=8'}];
+let tmp={1:'',2:'',3:'',r1:'',r2:'',r3:''},ri=0;
+let wrap=document.getElementById('sWrap'),dots=document.querySelectorAll('.dot');
+function updateDots(){let i=Math.round(wrap.scrollLeft/window.innerWidth);dots.forEach((d,j)=>d.classList.toggle('active',j===i))}
+wrap.addEventListener('scroll',updateDots);dots.forEach((d,i)=>d.addEventListener('click',()=>{wrap.scrollTo({left:i*window.innerWidth,behavior:'smooth'})}));
+function openT(){document.getElementById('tlog').classList.remove('hide');document.getElementById('tlog').style.display='flex';switchTab('T');}
+function gh(){document.getElementById('tlog').classList.add('hide');document.getElementById('tlog').style.display='none';document.getElementById('td').classList.add('hide');document.getElementById('sd').classList.add('hide')}
+function switchTab(t){if(t==='T'){document.getElementById('tabT').classList.add('active');document.getElementById('tabS').classList.remove('active');document.getElementById('teacherBox').classList.remove('hide');document.getElementById('studentBox').classList.add('hide');}else{document.getElementById('tabS').classList.add('active');document.getElementById('tabT').classList.remove('active');document.getElementById('studentBox').classList.remove('hide');document.getElementById('teacherBox').classList.add('hide');}}
+function lt(){if(document.getElementById('a').value==='admin'&&document.getElementById('b').value==='1234'){document.getElementById('tlog').classList.add('hide');document.getElementById('tlog').style.display='none';document.getElementById('td').classList.remove('hide')}else alert('Teacher ID: admin Pass: 1234')}
+function ls(){let id=document.getElementById('sa').value,ps=document.getElementById('sb').value;if((id==='student'&&ps==='1234')||(id&&ps)){document.getElementById('tlog').classList.add('hide');document.getElementById('tlog').style.display='none';document.getElementById('sd').classList.remove('hide');document.getElementById('sWelcome').innerText='ID: '+id;}else alert('Demo - ID: student Pass: 1234')}
+function showR(){let r=reviews[ri];document.getElementById('rvImg').src=r.p;document.getElementById('rvName').innerText=r.n;document.getElementById('rvText').innerText=r.t;document.getElementById('rvCount').innerText=(ri+1)+'/3';}
+function save(i){if(!tmp[i])return alert('Photo select karo
