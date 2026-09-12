@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;overflow:hidden}
+#logoBtn{position:fixed;top:10px;left:10px;z-index:99999;display:flex;align-items:center;gap:8px;background:#fff;padding:6px 12px 6px 6px;border-radius:14px;box-shadow:0 4px 15px rgba(0,0,0,.3);border:none;cursor:pointer}
+#sWrap{width:100vw;height:100vh;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+#sWrap::-webkit-scrollbar{display:none}
+.page{min-width:100vw;width:100vw;height:100vh;scroll-snap-align:start;flex-shrink:0;position:relative;background:#fef9e8}
+.page img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+.reviewBar{position:fixed;bottom:62px;left:10px;right:10px;z-index:50;background:#fff;border-radius:14px;padding:10px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.dots{position:fixed;bottom:20px;left:0;right:0;z-index:50;display:flex;justify-content:center;gap:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:#bbb;border:2px solid #fff;transition:.3s;cursor:pointer}
+.dot.on{background:#1e1b4b;width:28px;border-radius:10px}
+.hide{display:none!important}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;color:#fff;cursor:pointer}
+input{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;background:#f8fafc}
+.tab{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:12px;gap:4px}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:700;background:transparent;font-size:12px;cursor:pointer}
+.tabBtn.on{background:#1e1b4b;color:#fff}
+</style>
+</head>
+<body>
+<button id="logoBtn"><img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:32px;height:32px;border-radius:8px"><div style="text-align:left;line-height:1.1"><b style="font-size:12px;color:#1e1b4b">SFA Classes</b><br><small style="font-size:9px;color:#16a34a;font-weight:700">Study for all</small></div></button>
+
+<div id="sWrap">
+<div class="page" id="pg0"><img src="sfa_banner.jpg" onerror="this.src='https://via.placeholder.com/800x1200/fef9e8/1e1b4b?text=SFA+Classes'"></div>
+<div class="page" id="pg1"><img id="img1" src="https://i.pravatar.cc/800?img=11"></div>
+<div class="page" id="pg2"><img id="img2" src="https://i.pravatar.cc/800?img=5"></div>
+<div class="page" id="pg3"><img id="img3" src="https://i.pravatar.cc/800?img=8"></div>
+</div>
+
+<div class="reviewBar"><img id="rvImg" src="https://i.pravatar.cc/80?img=32" style="width:40px;height:40px;border-radius:50%"><div style="flex:1"><b id="rvName" style="font-size:12px">Rahul</b> <small style="color:#f59e0b">★★★★★</small><p id="rvText" style="font-size:11px;color:#555">Best coaching!</p></div><small id="rvCount" style="color:#888">1/3</small></div>
+<div class="dots"><div class="dot on" data-i="0"></div><div class="dot" data-i="1"></div><div class="dot" data-i="2"></div><div class="dot" data-i="3"></div></div>
+
+<div id="tlog" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999999;align-items:center;justify-content:center;padding:12px">
+<div style="background:#fff;border-radius:20px;padding:16px;width:100%;max-width:380px;max-height:90vh;overflow:auto">
+<div class="tab"><button class="tabBtn on" id="tT">Teacher</button><button class="tabBtn" id="tS">Student</button><button class="tabBtn" id="tA">About</button></div>
+<div id="boxT"><input id="a" placeholder="admin"><input id="b" type="password" placeholder="1234"><button class="btn" style="background:#1e1b4b" id="btnT">Login</button></div>
+<div id="boxS" class="hide"><input id="sa" placeholder="student"><input id="sb" type="password" placeholder="1234"><button class="btn" style="background:#16a34a" id="btnS">Student Login</button></div>
+<div id="boxA" class="hide"><div style="background:#fffaf0;border-radius:14px;padding:14px;border:1px solid #fde68a"><div style="display:flex;gap:12px;align-items:center"><img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:52px;height:52px;border-radius:12px"><div><b style="font-size:14px;color:#1e1b4b">Nitish Sir</b><br><small style="background:#16a34a;color:#fff;padding:2px 6px;border-radius:6px;font-size:10px;font-weight:700">Educator • 12+ Years</small></div></div><p style="font-size:12px;color:#444;margin-top:10px;line-height:1.6">🎯 <b>SFA Classes</b><br>Small Steps Make Big Results<br><br>👨‍🏫 Founder: Nitish - 12+ years experience</p><div style="margin-top:12px;display:flex;flex-direction:column;gap:8px"><a href="tel:9910964524" style="background:#1e1b4b;color:#fff;text-decoration:none;padding:12px;border-radius:10px;text-align:center;font-weight:700">📞 9910964524</a><a href="https://wa.me/919910964524" target="_blank" style="background:#16a34a;color:#fff;text-decoration:none;padding:12px;border-radius:10px;text-align:center;font-weight:700">💬 WhatsApp</a><a href="https://www.google.com/maps/search/?api=1&query=SFA+Classes" target="_blank" style="background:#fff;border:1px solid #ddd;color:#1e1b4b;text-decoration:none;padding:12px;border-radius:10px;text-align:center;font-weight:700">📍 Google Maps</a></div></div></div>
+<button class="btn" style="background:#eee;color:#000;margin-top:10px" id="btnC">Close</button>
+</div>
+</div>
+
+<div id="td" class="hide" style="position:fixed;inset:0;background:#f8fafc;z-index:999998;max-width:430px;margin:auto;overflow:auto">
+<div style="background:#1e1b4b;color:#fff;padding:12px;display:flex;justify-content:space-between"><b>Teacher Panel</b><button id="xTD" style="background:#fff;color:#1e1b4b;border:none;padding:6px 12px;border-radius:8px;font-weight:700">X</button></div>
+<div style="display:flex;background:#fff;padding:6px;gap:6px"><button id="tTabStu" class="btn" style="background:#1e1b4b;flex:1;font-size:11px">Students</button><button id="tTabRev" class="btn" style="background:#eee;color:#000;flex:1;font-size:11px">Reviews</button><button id="tTabTop" class="btn" style="background:#eee;color:#000;flex:1;font-size:11px">Toppers</button></div>
+<div id="panelStudents" style="padding:12px"><div style="background:#fff;border-radius:14px;padding:12px"><input id="stuName" placeholder="Name"><input id="stuId" placeholder="ID"><input id="stuPass" placeholder="Pass"><input id="stuCourse" placeholder="Course"><button class="btn" style="background:#16a34a" id="btnAddStu">Add Student</button><div id="stuList" style="margin-top:10px"></div></div></div>
+<div id="panelReviews" class="hide" style="padding:12px"><div style="background:#fff;border-radius:14px;padding:12px"><input id="r1n"><input id="r1t"><input id="r1p" type="file"><input id="r2n"><input id="r2t"><input id="r2p" type="file"><input id="r3n"><input id="r3t"><input id="r3p" type="file"><button class="btn" style="background:#1e1b4b" id="btnSR">Save Reviews</button></div></div>
+<div id="panelToppers" class="hide" style="padding:12px"><div style="background:#fff;border-radius:14px;padding:12px"><input id="ph1" type="file"><button class="btn" style="background:#1e1b4b" id="bp1">Save P1</button><br><br><input id="ph2" type="file"><button class="btn" style="background:#16a34a" id="bp2">Save P2</button><br><br><input id="ph3" type="file"><button class="btn" style="background:#f59e0b" id="bp3">Save P3</button></div></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+let photos=JSON.parse(localStorage.getItem('sfa_photos')||'null')||{p1:'https://i.pravatar.cc/800?img=11',p2:'https://i.pravatar.cc/800?img=5',p3:'https://i.pravatar.cc/800?img=8'};
+let reviews=JSON.parse(localStorage.getItem('sfa_reviews3')||'null')||[{n:'Rahul',t:'Best!',p:'https://i.pravatar.cc/80?img=32'},{n:'Priya',t:'95% aaya!',p:'https://i.pravatar.cc/80?img=5'},{n:'Aman',t:'Top!',p:'https://i.pravatar.cc/80?img=8'}];
+let tmp={},ri=0;
+let wrap=document.getElementById('sWrap');
+let dots=document.querySelectorAll('.dot');
+
+function updateDots(){
+let idx=Math.round(wrap.scrollLeft/window.innerWidth);
+dots.forEach((d,j)=>d.classList.toggle('on',j===idx));
+}
+wrap.addEventListener('scroll',updateDots,{passive:true});
+dots.forEach(d=>{
+d.addEventListener('click',()=>{
+let i=parseInt(d.dataset.i);
+wrap.scrollTo({left:i*window.innerWidth,behavior:'smooth'});
+});
+});
+
+let logoBtn=document.getElementById('logoBtn');
+let tlog=document.getElementById('tlog');
+function openLogin(){tlog.style.display='flex';}
+function closeAll(){tlog.style.display='none';document.getElementById('td').classList.add('hide');}
+logoBtn.addEventListener('click',openLogin);
+document.getElementById('btnC').addEventListener('click',closeAll);
+document.getElementById('xTD').addEventListener('click',closeAll);
+
+function tab(t){
+document.getElementById('tT').classList.toggle('on',t==='T');
+document.getElementById('tS').classList.toggle('on',t==='S');
+document.getElementById('tA').classList.toggle('on',t==='A');
+document.getElementById('boxT').classList.toggle('hide',t!=='T');
+document.getElementById('boxS').classList.toggle('hide',t!=='S');
+document.getElementById('boxA').classList.toggle('hide',t!=='A');
+}
+document.getElementById('tT').onclick=()=>tab('T');
+document.getElementById('tS').onclick=()=>tab('S');
+document.getElementById('tA').onclick=()=>tab('A');
+
+document.getElementById('btnT').onclick=()=>{
+if(document.getElementById('a').value==='admin'&&document.getElementById('b').value==='1234'){
+closeAll();document.getElementById('td').classList.remove('hide');switchTeacherTab('stu');
+}else alert('admin / 1234');
+};
+document.getElementById('btnS').onclick=()=>{closeAll();alert('Welcome')};
+
+window.switchTeacherTab=function(t){
+document.getElementById('panelStudents').classList.toggle('hide',t!=='stu');
+document.getElementById('panelReviews').classList.toggle('hide',t!=='rev');
+document.getElementById('panelToppers').classList.toggle('hide',t!=='top');
+document.getElementById('tTabStu').style.background=t==='stu'?'#1e1b4b':'#eee';
+document.getElementById('tTabStu').style.color=t==='stu'?'#fff':'#000';
+document.getElementById('tTabRev').style.background=t==='rev'?'#1e1b4b':'#eee';
+document.getElementById('tTabRev').style.color=t==='rev'?'#fff':'#000';
+document.getElementById('tTabTop').style.background=t==='top'?'#1e1b4b':'#eee';
+document.getElementById('tTabTop').style.color=t==='top'?'#fff':'#000';
+};
+document.getElementById('tTabStu').onclick=()=>switchTeacherTab('stu');
+document.getElementById('tTabRev').onclick=()=>switchTeacherTab('rev');
+document.getElementById('tTabTop').onclick=()=>switchTeacherTab('top');
+
+let students=JSON.parse(localStorage.getItem('sfa_students')||'[]');
+function renderStudents(){let h='';students.forEach((s,i)=>{h+=`<div style="background:#f8fafc;border:1px solid #eee;border-radius:8px;padding:8px;margin-bottom:6px;display:flex;justify-content:space-between"><div><b style="font-size:12px">${s.name}</b><br><small>ID:${s.id}</small></div><button onclick="delStu(${i})" style="background:#fee;color:#b00;border:none;padding:4px 8px;border-radius:6px">Del</button></div>`});document.getElementById('stuList').innerHTML=h||'
