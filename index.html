@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SFA Classes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;overflow:hidden;margin:0}
+.topBar{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:8px 10px;max-width:430px;margin:auto;pointer-events:none}
+.logoMerged{pointer-events:auto;display:flex;align-items:center;gap:8px;background:#fff;padding:6px 12px 6px 6px;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.2);border:none;cursor:pointer}
+.rightBtns{pointer-events:auto;display:flex;gap:8px}
+.iconBtn{background:#fff;border:none;padding:8px 12px;border-radius:20px;font-size:12px;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.15);cursor:pointer}
+.sWrap{width:100vw;height:100vh;overflow-x:auto;overflow-y:hidden;display:flex;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+.sWrap::-webkit-scrollbar{display:none}
+.page{min-width:100vw;width:100vw;height:100vh;scroll-snap-align:start;flex-shrink:0;position:relative;background:#fef9e8;display:flex;align-items:center;justify-content:center;padding-top:50px}
+.page img.bg{width:100%;height:100%;object-fit:cover;object-position:top center;position:absolute;top:0;left:0}
+.page img.cover{object-fit:cover;background:#000}
+.reviewBar{position:fixed;bottom:62px;left:10px;right:10px;z-index:45;background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 4px 20px rgba(0,0,0,.3);display:flex;gap:10px;align-items:center;max-width:410px;margin:auto}
+.dots{position:fixed;bottom:22px;left:0;right:0;z-index:40;display:flex;justify-content:center;gap:10px}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.25);transition:.3s;cursor:pointer;border:2px solid #fff}
+.dot.active{background:#1e1b4b;width:28px;border-radius:10px}
+.hide{display:none!important}
+.btn{width:100%;padding:13px;border:none;border-radius:10px;font-weight:bold;color:#fff}
+input,textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:10px;margin-bottom:8px;background:#f8fafc}
+.tab{display:flex;background:#f1f5f9;border-radius:10px;padding:4px;margin-bottom:12px;gap:4px}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:8px;font-weight:700;cursor:pointer;background:transparent;font-size:12px}
+.tabBtn.active{background:#1e1b4b;color:#fff}
+</style>
+</head>
+<body>
+
+<!-- TOP FIXED BAR - HAMESHA DIKHEGA -->
+<div class="topBar">
+<button class="logoMerged" onclick="openT()">
+<img src="file_000000006f048211a0068b5f7a862720.jpg" style="width:32px;height:32px;border-radius:8px;object-fit:cover">
+<div style="text-align:left;line-height:1.1"><b style="font-size:12px;color:#1e1b4b">SFA Classes</b><br><small style="font-size:9px;color:#16a34a;font-weight:700">Study for all</small></div>
+</button>
+<div class="rightBtns">
+<button class="iconBtn" onclick="openT()">🔐 Login</button>
+<button class="iconBtn" onclick="openAbout()">ℹ️ About</button>
+</div>
+</div>
+
+<div id="sWrap" class="sWrap">
+<div class="page"><img class="bg" src="sfa_banner.jpg"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img1" src="https://i.pravatar.cc/800?img=11"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img2" src="https://i.pravatar.cc/800?img=5"></div>
+<div class="page" style="background:#000"><img class="bg cover" id="img3" src="https://i.pravatar.cc/800?img=8"></div>
+</div>
+
+<div class="reviewBar" id="reviewBar"><img id="rvImg" src="https://i.pravatar.cc/80?img=32" style="width:40px;height:40px;border-radius:50%"><div style="flex:1"><div style="display:flex;gap:6px"><b id="rvName" style="font-size:12px">Rahul Kumar</b><small style="color:#f59e0b">★★★★★</small><small id="rvCount" style="margin-left:auto;color:#888;font-size:10px">1/3</small></div><p id="rvText" style="font-size:11px;color:#555;margin-top:2px">SFA Classes ne meri life badal di!</p></div></div>
+<div class="dots" id="dots"><div class="dot active" onclick="goTo(0)"></div><div class="dot" onclick="goTo(1)"></div><div class="dot" onclick="goTo(2)"></div><div class="dot" onclick="goTo(3)"></div></div>
+
+<!-- LOGIN + ABOUT MODAL -->
+<div id="tlog" class="hide" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:12px">
+<div style="background:#fff;border-radius:20px;padding:16px;width:100%;max-width:380px;max-height:92vh;overflow:auto">
+
+<div class="tab">
+<button id="tabT" class="tabBtn active" onclick="switchTab('T')">Teacher</button>
+<button id="tabS" class="tabBtn" onclick="switchTab('S')">Student</button>
+<button id="tabA" class="tabBtn" onclick="switchTab('A')">About SFA</button>
+</div>
+
+<div id="teacherBox"><input id="a" placeholder="Teacher ID = admin"><input id="b" type="password" placeholder="Pass = 1234"><button class="btn" style="background:#1e1b4b;margin-top:4px" onclick="lt()">Teacher Login</button></div>
+
+<div id="studentBox" class="hide"><input id="sa" placeholder="Student ID"><input id="sb" type="password" placeholder="Password"><button class="btn" style="background:#16a34a;margin-top:4px" onclick="ls()">Student Login</button><p style="font-size:11px;color:#888;margin-top:6px;text-align:center">Demo: student / 1234</p></div>
+
+<div id="aboutBox" class="hide">
+<div style="background:#fffaf0;border-radius:12px;padding:12px">
+<b style="color:#1e1b4b">📚 SFA Classes - Study for all</b><br><br>
+<p style="font-size:12px;color:#444;line-height:1.5">🎯 <b>Mission:</b> Small Steps Make Big Results - Har student ko best education dena!<br><br>
+📍 <b>Address:</b> SFA Classes Center<br>
+📞 <b>Contact:</b> +91 XXXXX XXXXX<br>
+✉️ <b>Email:</b> sfaclasses@gmail.com<br><br>
+💡 <b>Why SFA?</b><br>
+• Experienced Teachers<br>
+• Small Batches<br>
+• Regular Tests<br>
+• Personal Attention</p>
+</div>
+</div>
+
+<button class="btn" style="background:#eee;color:#000;margin-top:10px" onclick="gh()">Close</button>
+</div>
+</div>
+
+<!-- TEACHER PANEL -->
+<div id="td" class="hide" style="position:fixed;inset:0;background:#fffafb;z-index:210;padding:12px;max-width:430px;margin:auto;overflow:auto"><div style="display:flex;justify-content:space-between"><b>Teacher Panel</b><span onclick="gh()" style="background:#1e1b4b;color:#fff;padding:6px 14px;border-radius:8px">X</span></div><div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px;border:2px solid #e0e7ff"><b>3 Reviews</b><br><br><input id="r1n"><input id="r1t"><input id="r1p" type="file" accept="image/*"><input id="r2n"><input id="r2t"><input id="r2p" type="file" accept="image/*"><input id="r3n"><input id="r3t"><input id="r3p" type="file" accept="image/*"><button class="btn" style="background:#1e1b4b" onclick="saveR()">Save</button></div><div style="background:#fff;border-radius:16px;padding:12px;margin-top:12px"><input id="ph1" type="file" accept="image/*"><button class="btn" style="background:#1e1b4b" onclick="save(1)">Photo1</button><br><br><input id="ph2" type="file" accept="image/*"><button class="btn" style="background:#16a34a" onclick="save(2)">Photo2</button><br><br><input id="ph3" type="file" accept="image/*"><button class="btn" style="background:#f59e0b" onclick="save(3)">Photo3</button></div></div>
+<div id="sd" class="hide" style="position:fixed;inset:0;background:#f0fdf4;z-index:210;padding:16px;max-width:430px;margin:auto;overflow:auto"><div style="background:#fff;border-radius:16px;padding:16px;margin-top:20px;text-align:center"><h2>Welcome!</h2><p id="sWelcome" style="font-size:12px;color:#666"></p><button class="btn" style="background:#1e1b4b;margin-top:14px" onclick="gh()">Logout</button></div></div>
+
+<script>
+let photos=JSON.parse(localStorage.getItem('sfa_photos')||'null')||{p1:'https://i.pravatar.cc/800?img=11',p2:'https://i.pravatar.cc/800?img=5',p3:'https://i.pravatar.cc/800?img=8'};
+let reviews=JSON.parse(localStorage.getItem('sfa_reviews3')||'null')||[{n:'Rahul Kumar',t:'SFA Classes ne meri life badal di! Best teachers ❤️',p:'https://i.pravatar.cc/80?img=32'},{n:'Priya Singh',t:'Yaha padhke mera 95% aaya!',p:'https://i.pravatar.cc/80?img=5'},{n:'Aman Verma',t:'Best coaching!',p:'https://i.pravatar.cc/80?img=8'}];
+let tmp={1:'',2:'',3:'',r1:'',r2:'',r3:''},ri=0;
+let wrap=document.getElementById('sWrap');
+let dots=document.querySelectorAll('.dot');
+function goTo(i){wrap.scrollTo({left:i*window.innerWidth,behavior:'smooth'});setTimeout(updateDots,300);}
+function updateDots(){let idx=Math.round(wrap.scrollLeft/window.innerWidth);dots.forEach((d,j)=>d.classList.toggle('active',j===idx));}
+wrap.addEventListener('scroll',()=>{clearTimeout(wrap._t);wrap._t=setTimeout(updateDots,100);});
+wrap.addEventListener('touchend',()=>setTimeout(updateDots,200));
+function openT(){document.getElementById('tlog').classList.remove('hide');document.getElementById('tlog').style.display='flex';switchTab('T');}
+function openAbout(){document.getElementById('tlog').classList.remove('hide');document.getElementById('tlog').style.display='flex';switchTab('A');}
+function gh(){document.getElementById('tlog').classList.add('hide');document.getElementById('tlog').style.display='none';document.getElementById('td').classList.add('hide');document.getElementById('sd').classList.add('hide')}
+function switchTab(t){document.getElementById('tabT').classList.toggle('active',t==='T');document.getElementById('tabS').classList.toggle('active',t==='S');document.getElementById('tabA').classList.toggle('active',t==='A');document.getElementById('teacherBox').classList.toggle('hide',t!=='T');document.getElementById('studentBox').classList.toggle('hide',t!=='S');document.getElementById('aboutBox').classList.toggle('hide',t!=='A');}
+function lt(){if(document.getElementById('a').value==='admin'&&document.getElementById('b').value==='1234'){gh();document.getElementById('td').classList.remove('hide');}else alert('admin / 1234')}
+function ls(){let id=document.getElementById('sa').value;if(id){gh();document.getElementById('sd').classList.remove('hide');document.getElementById('sWelcome').innerText='ID: '+id;}else alert('ID dalo')}
+function showR(){let r=reviews[ri];document.getElementById('rvImg').src=r.p;document.getElementById('rvName').innerText=r.n;document.getElementById('rvText').innerText=r.t;document.getElementById('rvCount').innerText=(ri+1)+'/3';}
+function save(i){if(!tmp[i])return alert('Photo select karo');photos['p'+i]=tmp[i];localStorage.setItem('sfa_photos',JSON.stringify(photos));document.getElementById('img'+i).src=photos['p'+i];alert('Saved!')}
+function saveR(){for(let i=0;i<3;i++){let n=document.getElementById('r'+(i+1)+'n').value,t=document.getElementById('r'+(i+1)+'t').value;if(n)reviews[i].n=n;if(t)reviews[i].t=t;if(tmp['r'+(i+1)])reviews[i].p=tmp['r'+(i+1)];}localStorage.setItem('sfa_reviews3',JSON.stringify(reviews));showR();alert('Saved!');}
+document.getElementById('ph1').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp[1]=ev.target.result;r.readAsDataURL(e.target.files[0])});
+document.getElementById('ph2').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp[2]=ev.target.result;r.readAsDataURL(e.target.files[0])});
+document.getElementById('ph3').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp[3]=ev.target.result;r.readAsDataURL(e.target.files[0])});
+document.getElementById('r1p').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp.r1=ev.target.result;r.readAsDataURL(e.target.files[0])});
+document.getElementById('r2p').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp.r2=ev.target.result;r.readAsDataURL(e.target.files[0])});
+document.getElementById('r3p').addEventListener('change',e=>{let r=new FileReader();r.onload=ev=>tmp.r3=ev.target.result;r.readAsDataURL(e.target.files[0])});
+setInterval(()=>{ri=(ri+1)%3;showR();},5000);
+document.getElementById('img1').src=photos.p1;document.getElementById('img2').src=photos.p2;document.getElementById('img3').src=photos.p3;
+document.getElementById('r1n').value=reviews[0].n;document.getElementById('r1t').value=reviews[0].t;document.getElementById('r2n').value=reviews[1].n;document.getElementById('r2t').value=reviews[1].t;document.getElementById('r3n').value=reviews[2].n;document.getElementById('r3t').value=reviews[2].t;showR();updateDots();
+</script>
+</body>
+</html>
